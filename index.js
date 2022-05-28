@@ -32,12 +32,31 @@ fetch(`${API_URL}${id_aleatorio1}`)
       return response.json();
    })
    .then(function (pokemon) {
+      console.log(pokemon);
+      let numero_ataques = pokemon.moves.length;
+      let ataque_aleatorio = Math.floor(Math.random() * numero_ataques);
+      let nombre_ataque = pokemon.moves[ataque_aleatorio].move.name;
+      //let nombre_url = pokemon.moves[ataque_aleatorio].move.url;
+      let poder_ataque = Math.floor(Math.random() * (500 - 100)) + 100;
+
       img1.src = pokemon.sprites.other.dream_world.front_default;
       div1.appendChild(img1);
       div1.appendChild(div3);
       parrafo1.appendChild(
          document.createTextNode(
-            "Nombre: " + pokemon.name + "\n" + "Tipo: " + pokemon.types[0].type.name
+            "Nombre: " +
+               pokemon.name +
+               "\n" +
+               "Tipo: " +
+               pokemon.types[0].type.name +
+               "Experiencia " +
+               pokemon.experiencia +
+               "\n" +
+               "Ataque: " +
+               nombre_ataque +
+               "\n" +
+               "Poder: " +
+               poder_ataque
          )
       );
       div1.appendChild(parrafo1);
@@ -49,6 +68,12 @@ fetch(`${API_URL}${id_aleatorio2}`)
       return response.json();
    })
    .then(function (pokemon) {
+      console.log(pokemon);
+      let numero_ataques = pokemon.moves.length;
+      let ataque_aleatorio = Math.floor(Math.random() * numero_ataques);
+      // let nombre_ataque = pokemon.moves[ataque_aleatorio].move.name;
+      let poder_ataque = Math.floor(Math.random() * (500 - 100)) + 100;
+
       img2.src = pokemon.sprites.other.dream_world.front_default;
       div2.appendChild(img2);
       div2.appendChild(div4);
